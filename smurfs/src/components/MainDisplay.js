@@ -11,6 +11,18 @@ const MainDisplay = () => {
 
     console.log("in MainDisplay", smurf)
 
+    deleteSmurf = (id) => {
+
+      axios
+      .delete(`http://localhost:3333/smurfs/${id}`)
+      .then(res => {
+        console.log("Deleted a Smurf: ", res)
+      })
+      .catch(err => {
+        console.log("Error in Delte: ", err)
+      })
+    }
+
 
     return (
         <div>
@@ -20,6 +32,7 @@ const MainDisplay = () => {
                     <h1>{smurf.name}</h1>
                     <h2>{smurf.age}</h2>
                     <h2>{smurf.height}</h2>
+                    <button onClick={deleteSmurf({smurf.id})}>Delete</button>
                 </div>
             ))}
             {/* {console.log("in return", smurf.name)} */}
