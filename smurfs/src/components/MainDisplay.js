@@ -13,7 +13,7 @@ const MainDisplay = () => {
     // console.log("in MainDisplay", smurf)
 
     const deleteSmurf = id => {
-      console.log("e:", e)
+      // console.log("e:", e)
       // const id = e.target.id
 
       axios
@@ -24,6 +24,7 @@ const MainDisplay = () => {
       .catch(err => {
         console.log("Error in Delte: ", err)
       })
+      window.location.reload()
     }
 
 
@@ -35,7 +36,7 @@ const MainDisplay = () => {
                     <h1>{smurf.name}</h1>
                     <h2>{smurf.age}</h2>
                     <h2>{smurf.height}</h2>
-                    <button onClick={this.deleteSmurf.bind(this, {smurf.id})>Delete</button>
+                    <button onClick={()=> deleteSmurf(smurf.id)}>Delete</button>
                 </div>
             ))}
             {/* {console.log("in return", smurf.name)} */}
