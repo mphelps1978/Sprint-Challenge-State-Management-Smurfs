@@ -1,6 +1,7 @@
 import React from 'react';
 import { useContext } from 'react'
 import { SmurfContext } from '../contexts/smurfContexts.js'
+import axios from 'axios'
 
 
 
@@ -9,9 +10,11 @@ const MainDisplay = () => {
     const { smurf } = useContext(SmurfContext);
 
 
-    console.log("in MainDisplay", smurf)
+    // console.log("in MainDisplay", smurf)
 
-    deleteSmurf = (id) => {
+    const deleteSmurf = id => {
+      console.log("e:", e)
+      // const id = e.target.id
 
       axios
       .delete(`http://localhost:3333/smurfs/${id}`)
@@ -32,7 +35,7 @@ const MainDisplay = () => {
                     <h1>{smurf.name}</h1>
                     <h2>{smurf.age}</h2>
                     <h2>{smurf.height}</h2>
-                    <button onClick={deleteSmurf({smurf.id})}>Delete</button>
+                    <button onClick={this.deleteSmurf.bind(this, {smurf.id})>Delete</button>
                 </div>
             ))}
             {/* {console.log("in return", smurf.name)} */}
